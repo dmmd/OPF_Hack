@@ -21,12 +21,12 @@ public class PstMain {
         PstDetector pstd = new PstDetector();
         MediaType mt = pstd.detect(new FileInputStream(file), new Metadata());
         if(mt == MediaType.application("vnd.ms-outlook")){
-            System.out.println("Hooray");
+            System.out.println("Outlook file detected");
             PstParser parser = new PstParser();
-            
             parser.parse(new FileInputStream(file), new DefaultHandler(), new Metadata(), new ParseContext());
-        }
-        
+        } else {
+			System.err.println(file.getName() + " Is not an outlook file");
+		}
     }
     
 }
