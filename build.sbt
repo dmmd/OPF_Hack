@@ -2,7 +2,7 @@ name := "Pst Reader"
 
 version := "0.0"
 
-mainClass := Some("org.opf.pst.PstReader")
+mainClass := Some("org.opf.pst.PSTMain")
 
 libraryDependencies ++= Seq(
 	"org.apache.tika" % "tika-core" % "1.3",
