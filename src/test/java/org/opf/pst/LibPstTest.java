@@ -2,6 +2,7 @@ package org.opf.pst;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.Date;
 
 import org.junit.Test;
 
@@ -35,11 +36,26 @@ public class LibPstTest {
 			if (folder.getContentCount() > 0) {
 				sb.append("  ");
 				PSTMessage email = (PSTMessage) folder.getNextChild();
-
+				
+				String subject = email.getSubject();
+				String sendEmail = email.getSenderEmailAddress();
+				String body = email.getBody();
+				String receiveEmail = email.getReceivedByAddress();
+				Date receiveTime = email.getMessageDeliveryTime();
+				boolean hasAttachment = email.hasAttachments();
+				int numAttachments = email.getNumberOfAttachments();
+				
 				while (email != null) {
-					System.out.println(sb.toString() + "Subject: "
-							+ email.getSubject() + " FROM: "
-							+ email.getDisplayName());
+					System.out.println(
+							"<div><class><email-entry>\nSUBJECT: " + subject
+							+ "\nFROM: " + sendEmail
+							+ "\nTO:" + receiveEmail
+							+ "\nDATE: " + receiveTime
+							+"\nHAS ATTACH: " + hasAttachment
+							+"\nNUM ATTACHMENTS: " + numAttachments
+							+ "\nCONTENT:" + body +"</email-entry></class><div>\n"
+							);
+							
 					email = (PSTMessage) folder.getNextChild();
 				}
 			}
