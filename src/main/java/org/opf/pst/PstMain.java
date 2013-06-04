@@ -11,11 +11,12 @@ import org.apache.tika.exception.TikaException;
 import org.apache.tika.metadata.Metadata;
 import org.apache.tika.mime.MediaType;
 import org.apache.tika.parser.ParseContext;
+import com.pff.*;
 
 import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
 public class PstMain {
-    public static void main(String[] args) throws IOException, SAXException, TikaException{
+    public static void main(String[] args) throws IOException, SAXException, TikaException, PSTException{
         System.out.println("PST Tika");
         File file = new File("/Users/dm/Desktop/outlook.pst");
         PstDetector pstd = new PstDetector();
