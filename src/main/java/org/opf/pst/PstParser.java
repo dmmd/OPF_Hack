@@ -22,7 +22,12 @@ import com.pff.PSTException;
 import com.pff.PSTFile;
 
 public class PstParser extends AbstractParser{
-    private static final Set<MediaType> SUPPORTED_TYPES =
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = -7158793395029661433L;
+	@SuppressWarnings("unused")
+	private static final Set<MediaType> SUPPORTED_TYPES =
         Collections.singleton(MediaType.application("vnd.ms-outlook"));
 
     public Set<MediaType> getSupportedTypes(ParseContext context) {
@@ -32,11 +37,8 @@ public class PstParser extends AbstractParser{
     public static final String OUTLOOK_MIME_TYPE = "application/vnd.ms-outlook";
 	
     public void parse(InputStream in, ContentHandler ch, Metadata mtdt, ParseContext pc) throws IOException, SAXException, TikaException{
-        
 		mtdt.set(Metadata.CONTENT_TYPE, OUTLOOK_MIME_TYPE);
         mtdt.set(Metadata.CONTENT_ENCODING, "utf-8");
-		BufferedReader br = new BufferedReader(new InputStreamReader(in));
-        String line;
 		TemporaryResources tmp = new TemporaryResources();
 		try{
 			TikaInputStream tis = TikaInputStream.get(in, tmp);

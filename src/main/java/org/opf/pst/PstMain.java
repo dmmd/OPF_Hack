@@ -7,15 +7,15 @@ package org.opf.pst;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
+
 import org.apache.tika.exception.TikaException;
 import org.apache.tika.metadata.Metadata;
 import org.apache.tika.mime.MediaType;
 import org.apache.tika.parser.ParseContext;
-import org.apache.tika.io.*;
-import com.pff.*;
-
 import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
+
+import com.pff.PSTException;
 public class PstMain {
     public static void main(String[] args) throws IOException, SAXException, TikaException, PSTException{
         System.out.println("PST Tika");
