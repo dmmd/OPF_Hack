@@ -9,6 +9,7 @@ import org.apache.tika.mime.MediaType;
 import org.apache.tika.parser.AbstractParser;
 import org.apache.tika.parser.ParseContext;
 import org.apache.tika.sax.XHTMLContentHandler;
+import org.apache.tika.io.*;
 import org.xml.sax.ContentHandler;
 import org.xml.sax.SAXException;
 import com.pff.*;
@@ -24,6 +25,8 @@ public class PstParser extends AbstractParser{
     }
 
     public static final String OUTLOOK_MIME_TYPE = "application/vnd.ms-outlook";
+	
+
 
     @Override
     public void parse(InputStream in, ContentHandler ch, Metadata mtdt, ParseContext pc) throws IOException, SAXException, TikaException{
@@ -32,19 +35,16 @@ public class PstParser extends AbstractParser{
         mtdt.set(Metadata.CONTENT_ENCODING, "utf-8");
 		BufferedReader br = new BufferedReader(new InputStreamReader(in));
         String line;
-		File tmpFile = new File("/tmp/tmpPst");
-		tmpFile.createNewFile();
-		PrintWriter out = new PrintWriter(new BufferedWriter(new FileWriter(tmpFile, true)));
-        while((line = br.readLine()) != null){
-       		out.write(line);
-        }
-		out.close();
+		TemporaryResources tmp = new TemporaryResources();
 		try{
-			PSTFile p = new PSTFile(tmpFile);
+			TikaInputStream tis = TikaInputStream.get(in, tmp);
+			PSTFile p = new PSTFile(tis.getFile());
 		} catch (PSTException p){
 			System.err.println(p);
+		} finally {
+			tmp.dispose();
 		}
-		System.out.println(tmpFile.length());
+		
 		XHTMLContentHandler xhtml = new XHTMLContentHandler(ch, mtdt);
 		System.out.println(xhtml);
     }

@@ -11,6 +11,7 @@ import org.apache.tika.exception.TikaException;
 import org.apache.tika.metadata.Metadata;
 import org.apache.tika.mime.MediaType;
 import org.apache.tika.parser.ParseContext;
+import org.apache.tika.io.*;
 import com.pff.*;
 
 import org.xml.sax.SAXException;
@@ -24,7 +25,10 @@ public class PstMain {
         if(mt == MediaType.application("vnd.ms-outlook")){
             System.out.println("Outlook file detected");
             PstParser parser = new PstParser();
-            parser.parse(new FileInputStream(file), new DefaultHandler(), new Metadata(), new ParseContext());
+
+				 parser.parse(new FileInputStream(file), new DefaultHandler(), new Metadata(), new ParseContext());
+
+           
         } else {
 			System.err.println(file.getName() + " Is not an outlook file");
 		}
