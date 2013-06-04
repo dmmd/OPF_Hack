@@ -13,8 +13,8 @@ import com.pff.PSTMessage;
 public class LibPstTest {
 
 	@Test
-	public void testANSI() throws Exception {
-		File f = new File("src/test/resources/org/opf/pst/test_ansi.pst");
+	public void test() throws Exception {
+		File f = new File("src/test/resources/org/opf/pst/sample1.pst");
 		PSTFile p = new PSTFile(f);
 		PSTFolder root = p.getRootFolder();
 		getFolders(root, 0);
