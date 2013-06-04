@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<mime-info>
+ <mime-type type="application/vnd.ms-outlook">
+  <acronym>PST</acronym>
+  <_comment>Outlook Personal Storage Table (Personal Folder File)[PFF]</_comment>
+  <magic priority="50">
+    <!-- ASCII: !BDN -->
+    <match value="0x2142444e" type="string" offset="0" />
+  </magic>
+  <glob pattern="*.pst"/>
+ </mime-type>
+</mime-info>
+ 
