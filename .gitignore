@@ -1,3 +1,7 @@
-project/*
-target/*
-.DS_Store
+/bin
+/target
+/.settings
+/.project
+/.classpath
+/.options
+/.externalToolBuilders

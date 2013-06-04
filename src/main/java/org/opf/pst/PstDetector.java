@@ -4,15 +4,15 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Arrays;
+
 import org.apache.tika.detect.Detector;
 import org.apache.tika.io.LookaheadInputStream;
 import org.apache.tika.metadata.Metadata;
 import org.apache.tika.mime.MediaType;
 
-public class PstDetector implements Detector{
+public class PstDetector implements Detector {
 
-    @Override
-    public MediaType detect(InputStream in, Metadata mtdt) throws IOException {
+	public MediaType detect(InputStream in, Metadata mtdt) throws IOException {
                 
         ByteArrayOutputStream bos = new ByteArrayOutputStream();
         bos.write(0x21);
