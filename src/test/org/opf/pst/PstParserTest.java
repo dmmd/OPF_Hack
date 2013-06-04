@@ -1,6 +1,6 @@
 package org.opf.pst;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.fail;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -8,8 +8,8 @@ import java.io.FileInputStream;
 import org.apache.tika.metadata.Metadata;
 import org.apache.tika.mime.MediaType;
 import org.apache.tika.parser.ParseContext;
+import org.apache.tika.sax.BodyContentHandler;
 import org.junit.Test;
-import org.xml.sax.helpers.DefaultHandler;
 
 public class PstParserTest {
 
@@ -21,12 +21,9 @@ public class PstParserTest {
         MediaType mt = pstd.detect(new FileInputStream(file), new Metadata());
         if(mt != MediaType.application("vnd.ms-outlook")){
         	fail("Did not detect vnd.ms-outlook mimetype");
-//            System.out.println("Outlook file detected");
-//            PstParser parser = new PstParser();
-//
-//				 parser.parse(new FileInputStream(file), new DefaultHandler(), new Metadata(), new ParseContext());
-//
-//           
+            System.out.println("Outlook file detected");
+            PstParser parser = new PstParser();
+            parser.parse(new FileInputStream(file), new BodyContentHandler(System.out), new Metadata(), new ParseContext());        
         }
 	}
 
