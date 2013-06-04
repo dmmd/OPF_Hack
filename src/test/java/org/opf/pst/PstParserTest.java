@@ -14,9 +14,9 @@ import org.junit.Test;
 public class PstParserTest {
 
 	@Test
-	public void test() throws Exception {
+	public void testANSI() throws Exception {
         System.out.println("PST Tika");
-        File file = new File("src/test/resources/test-inbox.pst");
+        File file = new File("src/test/resources/org/opf/pst/test_ansi.pst");
         PstDetector pstd = new PstDetector();
         MediaType mt = pstd.detect(new FileInputStream(file), new Metadata());
         if(mt != MediaType.application("vnd.ms-outlook")){
