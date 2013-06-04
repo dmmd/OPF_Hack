@@ -15,7 +15,7 @@ public class LibPstTest {
 
 	@Test
 	public void test() throws Exception {
-		File f = new File("/Users/dm/Desktop/outlook.ost");
+		File f = new File("src/test/resources/org/opf/pst/sample1.pst");
 		PSTFile p = new PSTFile(f);
 		PSTFolder root = p.getRootFolder();
 		getFolders(root, 0);
