@@ -1,7 +1,6 @@
 package org.opf.pst;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 
 import org.junit.Test;
@@ -15,7 +14,7 @@ public class LibPstTest {
 
 	@Test
 	public void test() throws Exception {
-		File f = new File("/Users/dm/Desktop/outlook.ost");
+		File f = new File("src/test/resources/test-inbox.pst");
 		PSTFile p = new PSTFile(f);
 		PSTFolder root = p.getRootFolder();
 		getFolders(root, 0);

@@ -12,6 +12,11 @@ import org.apache.tika.mime.MediaType;
 
 public class PstDetector implements Detector {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -3177913433589748143L;
+
 	public MediaType detect(InputStream in, Metadata mtdt) throws IOException {
                 
         ByteArrayOutputStream bos = new ByteArrayOutputStream();
@@ -21,7 +26,8 @@ public class PstDetector implements Detector {
         bos.write(0x4e);
         
         MediaType type = MediaType.OCTET_STREAM;
-        InputStream lookahead = new LookaheadInputStream(in, 1024);        
+        @SuppressWarnings("resource")
+		InputStream lookahead = new LookaheadInputStream(in, 1024);        
         ByteArrayOutputStream fos = new ByteArrayOutputStream();
         
         for(int i = 0; i < 4; i++){
