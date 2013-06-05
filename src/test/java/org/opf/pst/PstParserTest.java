@@ -21,7 +21,7 @@ public class PstParserTest {
 	@Test
 	public void test() throws Exception {
         System.out.println("PST Tika");
-        File file = new File("src/test/resources/org/opf/pst/test_ansi.pst");
+        File file = new File("src/test/resources/org/opf/pst/test_unicode.pst");
 		//File file = new File("/home/count0/Downloads/outlook.pst");
         PstDetector pstd = new PstDetector();
         MediaType mt = pstd.detect(new FileInputStream(file), new Metadata());

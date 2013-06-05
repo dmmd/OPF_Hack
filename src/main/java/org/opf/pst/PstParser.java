@@ -87,8 +87,7 @@ public class PstParser extends AbstractParser {
 	}
 
 	private void parseMessage(PSTMessage email, Stack<String> folderNames,
-			XHTMLContentHandler xhtml, Metadata mtdt, ParseContext pc)
-			throws TikaException, SAXException, IOException {
+		XHTMLContentHandler xhtml, Metadata mtdt, ParseContext pc) throws TikaException, SAXException, IOException {
 		String subject = email.getSubject();
 		String sendEmail = email.getSenderEmailAddress();
 		String body = email.getBody();
@@ -98,23 +97,19 @@ public class PstParser extends AbstractParser {
 		int numAttachments = email.getNumberOfAttachments();
 
         xhtml.startElement("div", "class", "email-entry");
-        xhtml.startElement("dl");
+		xhtml.startElement("div", "class", "header");
+       	xhtml.startElement("dl");
+	
 		header(xhtml, "From", sendEmail);
 		header(xhtml, "To", receiveEmail);
-		//header(xhtml, "Cc", cc.toString());
-		//header(xhtml, "Bcc", bcc.toString());
+		header(xhtml, "Received Time", receiveTime.toString());
+		header(xhtml, "Subject", subject);
+	//header(xhtml, "Cc", cc.toString());
+	//header(xhtml, "Bcc", bcc.toString());
 		xhtml.endElement("dl");
-        xhtml.startElement("p");
-        
-		// Simple message (with no attachments), extract content with
-		// Tika parser
-		//Parser parser = new AutoDetectParser();
-		//BodyContentHandler handlerContent = new BodyContentHandler();
-		//parser.parse(new ByteArrayInputStream(body.toString().getBytes()),
-			//	handlerContent, mtdt, pc);
-		//xhtml.element("div", handlerContent.toString());
-        xhtml.element("div", body);
-        xhtml.endElement("p");
+		xhtml.endElement("div");
+		xhtml.startElement("div", "class", "body");
+		xhtml.element("div", body);
         xhtml.endElement("div");
 	}
 	
