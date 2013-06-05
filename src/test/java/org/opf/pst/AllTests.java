@@ -43,7 +43,6 @@ public class AllTests {
 	 */
 	public final static File getResourceAsFile(String resName)
 			throws URISyntaxException {
-		System.out.println(resName);
 		URI uri = ClassLoader.getSystemResource(resName).toURI();
 		return new File(uri);
 	}
