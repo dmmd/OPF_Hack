@@ -14,6 +14,18 @@
 					<target />
 				</configuration>
 			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-jar-plugin</artifactId>
+				<configuration>
+					<archive>
+						<manifest>
+							<mainClass>org.opf.pst.PstMain</mainClass>
+							<packageName>org.opf.pst</packageName>
+						</manifest>
+					</archive>
+				</configuration>
+			</plugin>
 		</plugins>
 	</build>
 	<dependencies>
@@ -21,19 +33,31 @@
 			<groupId>org.apache.tika</groupId>
 			<artifactId>tika-core</artifactId>
 			<version>1.3</version>
-  	</dependency>
-	<dependency>
-		<groupId>libpst</groupId>
-		<artifactId>libpst</artifactId>
-		<version>0.7</version>
-		<scope>system</scope>
-		<systemPath>${project.basedir}/lib/java-libpst.0.7.jar</systemPath>
-	</dependency>
-	<dependency>
-		<groupId>junit</groupId>
-		<artifactId>junit</artifactId>
-		<version>4.11</version>
-		<scope>test</scope>
-	</dependency>
+		</dependency>
+		<dependency>
+			<groupId>libpst</groupId>
+			<artifactId>libpst</artifactId>
+			<version>0.7</version>
+			<scope>system</scope>
+			<systemPath>${project.basedir}/lib/java-libpst.0.7.jar</systemPath>
+		</dependency>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.11</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>javax.xml.parsers</groupId>
+			<artifactId>jaxp-api</artifactId>
+			<version>1.4.5</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>jdom</groupId>
+			<artifactId>jdom</artifactId>
+			<version>1.1</version>
+			<scope>test</scope>
+		</dependency>
 	</dependencies>
 </project>
