@@ -1,2 +1,45 @@
 A PST/OST PARSER FOR TIKA
 =========================
+
+This currently uses a new version of Tika and may one day be added to Tika.
+
+To use this at the moment you'll require the OPF's Bintray Maven repo to get
+an up to date version of Tika to test.  It'll be cleaned up, but cut to the
+chase, add this to your maven settings.xml file:
+
+<?xml version='1.0' encoding='UTF-8'?>
+<settings xsi:schemaLocation='http://maven.apache.org/SETTINGS/1.0.0 http://maven.apache.org/xsd/settings-1.0.0.xsd' xmlns='http://maven.apache.org/SETTINGS/1.0.0' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'>
+<profiles>
+
+  <profile>
+    <repositories>
+      <repository>
+        <snapshots>
+          <enabled>false</enabled>
+        </snapshots>
+        <id>central</id>
+        <name>bintray</name>
+        <url>http://dl.bintray.com/openplanets/opf-maven</url>
+      </repository>
+    </repositories>
+    <pluginRepositories>
+      <pluginRepository>
+        <snapshots>
+          <enabled>false</enabled>
+        </snapshots>
+        <id>central</id>
+        <name>bintray-plugins</name>
+        <url>http://dl.bintray.com/openplanets/opf-maven</url>
+      </pluginRepository>
+    </pluginRepositories>
+    <id>bintray</id>
+  </profile>
+
+</profiles>
+
+<activeProfiles>
+  <activeProfile>bintray</activeProfile>
+</activeProfiles>
+</settings>
+
+and all should be well.
