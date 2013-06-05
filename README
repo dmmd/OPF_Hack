@@ -18,7 +18,7 @@ chase, add this to your maven settings.xml file:
           <enabled>false</enabled>
         </snapshots>
         <id>central</id>
-        <name>bintray</name>
+        <name>opf-maven</name>
         <url>http://dl.bintray.com/openplanets/opf-maven</url>
       </repository>
     </repositories>
@@ -27,7 +27,7 @@ chase, add this to your maven settings.xml file:
         <snapshots>
           <enabled>false</enabled>
         </snapshots>
-        <id>central</id>
+        <id>opf-maven</id>
         <name>bintray-plugins</name>
         <url>http://dl.bintray.com/openplanets/opf-maven</url>
       </pluginRepository>
