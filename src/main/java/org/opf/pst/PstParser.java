@@ -97,20 +97,25 @@ public class PstParser extends AbstractParser {
 		int numAttachments = email.getNumberOfAttachments();
 
         xhtml.startElement("div", "class", "email-entry");
-		xhtml.startElement("div", "class", "header");
-       	xhtml.startElement("dl");
-	
-		header(xhtml, "From", sendEmail);
-		header(xhtml, "To", receiveEmail);
-		header(xhtml, "Received Time", receiveTime.toString());
-		header(xhtml, "Subject", subject);
-	//header(xhtml, "Cc", cc.toString());
-	//header(xhtml, "Bcc", bcc.toString());
-		xhtml.endElement("dl");
+			xhtml.startElement("div", "class", "header");
+       			xhtml.startElement("dl");
+					header(xhtml, "From", sendEmail);
+					header(xhtml, "To", receiveEmail);
+					header(xhtml, "Received Time", receiveTime.toString());
+					header(xhtml, "Subject", subject);
+					header(xhtml, "hasAttachments", String.valueOf(hasAttachment));
+					if(numAttachments > 0){
+						header(xhtml, "numberOfAttachments", String.valueOf(numAttachments));
+					}
+					//header(xhtml, "Cc", cc.toString());
+					//header(xhtml, "Bcc", bcc.toString());
+				xhtml.endElement("dl");
+			xhtml.endElement("div");
+			
+			xhtml.startElement("div", "class", "body");
+				xhtml.element("div", body);
+        	xhtml.endElement("div");
 		xhtml.endElement("div");
-		xhtml.startElement("div", "class", "body");
-		xhtml.element("div", body);
-        xhtml.endElement("div");
 	}
 	
 	private void header(XHTMLContentHandler xhtml, String key, String value)
