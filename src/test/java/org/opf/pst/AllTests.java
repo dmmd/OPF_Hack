@@ -16,6 +16,7 @@ public class AllTests {
 	private static final String TEST_ROOT = "org/opf/";
 	private static final String TEST_PST = TEST_ROOT + "pst/";
 	private static final String TEST_NONPST = TEST_ROOT + "nonpst/";
+    private static final String TEST_ENRON = TEST_ROOT + "enron_pst";
 	private static final String PST_EXT = "pst";
 
 	/**
@@ -41,6 +42,11 @@ public class AllTests {
 	 * @throws URISyntaxException
 	 *             if the named resource can't be converted to a URI
 	 */
+
+    public static final Collection<File> getEnronPst() throws URISyntaxException {
+        return getResourceFilesByExt(TEST_ENRON, true, PST_EXT);
+    }
+
 	public final static File getResourceAsFile(String resName)
 			throws URISyntaxException {
 		System.out.println(resName);

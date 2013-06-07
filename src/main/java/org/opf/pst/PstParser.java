@@ -46,13 +46,14 @@ public class PstParser extends AbstractParser {
 	public void parse(InputStream in, ContentHandler ch, Metadata mtdt,
 			ParseContext pc) throws IOException, SAXException, TikaException {
 		mtdt.set(Metadata.CONTENT_TYPE, OUTLOOK_MIME_TYPE);
-		mtdt.set(Metadata.CONTENT_ENCODING, "utf-8"); // FIXME not detected
+		//mtdt.set(Metadata.CONTENT_ENCODING, "utf-8"); // FIXME not detected
 		TemporaryResources tmp = new TemporaryResources();
 		try {
 			TikaInputStream tis = TikaInputStream.get(in, tmp);
 			PSTFile p = new PSTFile(tis.getFile());
 			XHTMLContentHandler xhtml = new XHTMLContentHandler(ch, mtdt);
 			parseFolder(p.getRootFolder(), new Stack<String>(), xhtml, mtdt, pc);
+            xhtml.endDocument();
 		} catch (PSTException p) {
 			System.err.println(p);
 		} finally {
