@@ -20,8 +20,8 @@
 				<configuration>
 					<archive>
 						<manifest>
-							<mainClass>org.opf.pst.PstMain</mainClass>
-							<packageName>org.opf.pst</packageName>
+							<mainClass>org.nypl.tika.TikaTest.</mainClass>
+							<packageName>org.nypl.tika</packageName>
 						</manifest>
 					</archive>
 				</configuration>

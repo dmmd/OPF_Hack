@@ -14,7 +14,6 @@ import javax.xml.transform.sax.TransformerHandler;
 import javax.xml.transform.stream.StreamResult;
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 
 import static org.junit.Assert.fail;
@@ -32,7 +31,7 @@ public class EnronPstTest {
                 fail("Did not detect vnd.ms-outlook mimetype");
             }
 
-            transform(file);
+            //transform(file);
             System.out.println(file.getName() + ": " + mt);
         }
     }
