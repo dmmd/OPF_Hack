@@ -1,27 +1,21 @@
 package org.opf.pst;
 
-import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Collections;
 import java.util.Date;
 import java.util.Set;
 import java.util.Stack;
-
 import org.apache.tika.exception.TikaException;
 import org.apache.tika.io.TemporaryResources;
 import org.apache.tika.io.TikaInputStream;
 import org.apache.tika.metadata.Metadata;
 import org.apache.tika.mime.MediaType;
 import org.apache.tika.parser.AbstractParser;
-import org.apache.tika.parser.AutoDetectParser;
 import org.apache.tika.parser.ParseContext;
-import org.apache.tika.parser.Parser;
-import org.apache.tika.sax.BodyContentHandler;
 import org.apache.tika.sax.XHTMLContentHandler;
 import org.xml.sax.ContentHandler;
 import org.xml.sax.SAXException;
-
 import com.pff.PSTException;
 import com.pff.PSTFile;
 import com.pff.PSTFolder;
@@ -29,9 +23,7 @@ import com.pff.PSTMessage;
 import com.pff.PSTObject;
 
 public class PstParser extends AbstractParser {
-	/**
-	 * 
-	 */
+    private PSTFile pstFile;
 	private static final long serialVersionUID = -7158793395029661433L;
 	@SuppressWarnings("unused")
 	private static final Set<MediaType> SUPPORTED_TYPES = Collections
@@ -50,13 +42,14 @@ public class PstParser extends AbstractParser {
 		TemporaryResources tmp = new TemporaryResources();
 		try {
 			TikaInputStream tis = TikaInputStream.get(in, tmp);
-			PSTFile p = new PSTFile(tis.getFile());
+			pstFile = new PSTFile(tis.getFile());
 			XHTMLContentHandler xhtml = new XHTMLContentHandler(ch, mtdt);
-			parseFolder(p.getRootFolder(), new Stack<String>(), xhtml, mtdt, pc);
+			parseFolder(pstFile.getRootFolder(), new Stack<String>(), xhtml, mtdt, pc);
             xhtml.endDocument();
 		} catch (PSTException p) {
 			System.err.println(p);
 		} finally {
+            pstFile.getFileHandle().close();
 			tmp.dispose();
 		}
 	}

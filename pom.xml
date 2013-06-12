@@ -20,7 +20,7 @@
 				<configuration>
 					<archive>
 						<manifest>
-							<mainClass>org.nypl.tika.TikaTest.</mainClass>
+							<mainClass>org.nypl.tika.Test2</mainClass>
 							<packageName>org.nypl.tika</packageName>
 						</manifest>
 					</archive>
@@ -54,7 +54,7 @@
 			<scope>test</scope>
 		</dependency>
 		<dependency>
-			<groupId>jdom</groupId>
+			<groupId>org.jdom</groupId>
 			<artifactId>jdom</artifactId>
 			<version>1.1</version>
 			<scope>test</scope>
